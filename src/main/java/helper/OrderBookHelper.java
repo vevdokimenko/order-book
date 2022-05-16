@@ -110,7 +110,7 @@ public class OrderBookHelper {
 
     public String getOutput() {
         String result = output.toString();
-        if (result.length() > 2) result.substring(0, result.length() - 1);
+        if (result.length() > 2) result = result.substring(0, result.length() - 1);
         return result;
     }
 }

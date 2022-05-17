@@ -11,8 +11,7 @@ public class FileTest {
     }
 
     @Test(timeout = 300)
-    public void testTimeout() throws InterruptedException
-    {
+    public void testTimeout() {
         Main.main(new String[]{""});
     }
 }

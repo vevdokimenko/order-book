@@ -1,7 +1,6 @@
 package helper;
 
 import java.io.*;
-import java.util.Arrays;
 
 public class FileHelper {
     private final String inputFilePath;

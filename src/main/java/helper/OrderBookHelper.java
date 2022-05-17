@@ -46,9 +46,9 @@ public class OrderBookHelper {
                             .filter((o) -> o.getPrice() == price)
                             .findFirst()
                             .orElse(null);
-            return filtered != null ? filtered.getSize() : 0;
+            return filtered != null ? filtered.getSize() : -1;
         } catch (Exception e) {
-            return 0;
+            return -1;
         }
     }
 
@@ -89,10 +89,13 @@ public class OrderBookHelper {
             case "best_ask":
                 return bestItem(bestAsk());
             case "size":
-                return output
-                        .append(getSizeByPrice(price))
+                int size = getSizeByPrice(price);
+                return (size != -1)
+                        ? output
+                        .append(size)
                         .append(NEWLINE)
-                        .toString();
+                        .toString()
+                        : null;
             default:
                 return null;
         }

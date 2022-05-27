@@ -3,6 +3,7 @@ package helper;
 import java.io.*;
 
 public class FileHelper {
+    Command command = new Command();
     private final String inputFilePath;
     private final String outputFilePath;
     private final String dir;
@@ -20,22 +21,21 @@ public class FileHelper {
                         : null;
     }
 
-    public String getFileContents() {
-        StringBuilder stringBuilder = new StringBuilder();
-        try (FileReader fileReader = new FileReader(dir + inputFilePath)) {
-            while (fileReader.ready()) {
-                int value = fileReader.read();
-                stringBuilder.append((char) value);
+    public void readInputFile() {
+        try (BufferedReader in = new BufferedReader(new FileReader(dir + inputFilePath))) {
+            String line;
+            while ((line = in.readLine()) != null) {
+                // process line here.
+                command.runCommand(line);
             }
         } catch (IOException e) {
-            System.exit(-1);
+            throw new RuntimeException(e);
         }
-        return stringBuilder.toString();
     }
 
-    public void writeOutputFile(String contents) {
+    public void writeOutputFile() {
         try (FileWriter fileWriter = new FileWriter(dir + outputFilePath)) {
-            fileWriter.write(contents);
+            fileWriter.write(command.getOutput());
         } catch (IOException e) {
             e.printStackTrace();
         }

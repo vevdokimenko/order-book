@@ -7,7 +7,7 @@ import java.util.Objects;
 @Data
 @AllArgsConstructor
 @ToString
-public class OrderBookItem {
+public class BookItem {
     private int price;
     private int size;
     private String type;
@@ -16,7 +16,7 @@ public class OrderBookItem {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OrderBookItem that = (OrderBookItem) o;
+        BookItem that = (BookItem) o;
         return price == that.price && type.equals(that.type);
     }
 

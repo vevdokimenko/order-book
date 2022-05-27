@@ -1,4 +1,4 @@
-u,11,1,bid
+u,9,1,bid
 u,11,5,ask
 q,best_bid
 u,10,2,bid
@@ -7,5 +7,3 @@ o,sell,1
 q,size,10
 u,9,0,bid
 u,11,0,ask
-q,best_bid
-q,size,119
